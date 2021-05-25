@@ -32,6 +32,8 @@ namespace KaasService
 
             services.AddTransient<IKaasRepository, KaasRepository>();
 
+            services.AddCors();
+
             services.AddControllers().AddXmlDataContractSerializerFormatters();
             services.AddSwaggerGen(c =>
             {
@@ -53,6 +55,8 @@ namespace KaasService
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
