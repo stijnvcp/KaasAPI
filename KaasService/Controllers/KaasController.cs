@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KaasService.Repositories;
+using KaasService.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KaasService.Controllers
 {
@@ -27,5 +29,23 @@ namespace KaasService.Controllers
         [HttpGet("smaken")]
         public ActionResult FindBySmaak(string smaak) =>
             base.Ok(repository.FindBySmaak(smaak));
+
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, Kaas kaas) {
+            if (this.ModelState.IsValid) {
+                try {
+                    kaas.Id = id;
+                    repository.Update(kaas);
+                    return base.Ok();
+                }
+                catch (DbUpdateConcurrencyException) {
+                    return base.NotFound();
+                }
+                catch {
+                    return base.Problem();
+                }
+            }
+            return base.BadRequest();
+        }
     }
 }
