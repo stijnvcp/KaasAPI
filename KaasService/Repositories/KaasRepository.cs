@@ -12,13 +12,12 @@ namespace KaasService.Repositories
         private readonly KaaslandContext context;
         public KaasRepository(KaaslandContext context) => this.context = context;
         public async Task<List<Kaas>> FindAllAsync() =>
-         await context.Kazen.AsNoTracking().ToListAsync();
+            await context.Kazen.AsNoTracking().ToListAsync();
         public async Task<Kaas> FindByIdAsync(int id) =>
-         await context.Kazen.FindAsync(id);
-        public asyc Task<List<Kaas>> FindBySmaakAsync(string smaak) =>
-
-         await context.Kazen.AsNoTracking().Where(kaas => kaas.Smaak==smaak).ToListAsync();
-        publi async Task UpdateAsync(Kaas kaas) {
+            await context.Kazen.FindAsync(id);
+        public async Task<List<Kaas>> FindBySmaakAsync(string smaak) =>
+            await context.Kazen.AsNoTracking().Where(kaas => kaas.Smaak==smaak).ToListAsync();
+        public async Task UpdateAsync(Kaas kaas) {
             context.Kazen.Update(kaas);
             await context.SaveChangesAsync();
         }
