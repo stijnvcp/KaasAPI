@@ -11,14 +11,16 @@ namespace KaasService.Repositories
     {
         private readonly KaaslandContext context;
         public KaasRepository(KaaslandContext context) => this.context = context;
-        public IQueryable<Kaas> FindAll() => context.Kazen.AsNoTracking();
-        public Kaas FindById(int id) => context.Kazen.Find(id);
-        public IQueryable<Kaas> FindBySmaak(string smaak) =>
-        context.Kazen.AsNoTracking().Where(kaas => kaas.Smaak == smaak);
-        public void Update(Kaas kaas)
-        {
+        public async Task<List<Kaas>> FindAllAsync() =>
+         await context.Kazen.AsNoTracking().ToListAsync();
+        public async Task<Kaas> FindByIdAsync(int id) =>
+         await context.Kazen.FindAsync(id);
+        public asyc Task<List<Kaas>> FindBySmaakAsync(string smaak) =>
+
+         await context.Kazen.AsNoTracking().Where(kaas => kaas.Smaak==smaak).ToListAsync();
+        publi async Task UpdateAsync(Kaas kaas) {
             context.Kazen.Update(kaas);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
     }

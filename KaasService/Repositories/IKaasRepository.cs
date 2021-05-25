@@ -8,9 +8,10 @@ namespace KaasService.Repositories
 {
     public interface IKaasRepository
     {
-        IQueryable<Kaas> FindAll();
-        Kaas FindById(int id);
-        IQueryable<Kaas> FindBySmaak(string smaak);
-        void Update(Kaas kaas);
+        Task<List<Kaas>> FindAllAsync();
+        Task<Kaas> FindByIdAsync(int id);
+        Task<List<Kaas>> FindBySmaakAsync(string smaak);
+        Task UpdateAsync(Kaas kaas);
+
     }
 }

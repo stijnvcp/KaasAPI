@@ -18,24 +18,22 @@ namespace KaasService.Controllers
         public KaasController(IKaasRepository repository) => this.repository = repository;
 
         [HttpGet]
-        public ActionResult FindAll() => base.Ok(repository.FindAll());
-
+        public async Task<ActionResult> FindAll() => base.Ok(await repository.FindAllAsync());
         [HttpGet("{id}")]
-        public ActionResult FindById(int id) {
-            var kaas = repository.FindById(id);
+        public async Task<ActionResult> FindById(int id) {
+            var kaas = await repository.FindByIdAsync(id);
             return kaas == null ? base.NotFound() : base.Ok(kaas);
         }
-
         [HttpGet("smaken")]
-        public ActionResult FindBySmaak(string smaak) =>
-            base.Ok(repository.FindBySmaak(smaak));
+        public async Task<ActionResult> FindBySmaak(string smaak) =>
+         base.Ok(await repository.FindBySmaakAsync(smaak));
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id, Kaas kaas) {
+        public async Task<ActionResult> Put(int id, Kaas kaas) {
             if (this.ModelState.IsValid) {
                 try {
                     kaas.Id = id;
-                    repository.Update(kaas);
+                    await repository.UpdateAsync(kaas);
                     return base.Ok();
                 }
                 catch (DbUpdateConcurrencyException) {
@@ -45,7 +43,7 @@ namespace KaasService.Controllers
                     return base.Problem();
                 }
             }
-            return base.BadRequest();
+            return base.BadRequest(this.ModelState);
         }
     }
 }
