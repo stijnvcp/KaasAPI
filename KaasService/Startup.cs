@@ -32,7 +32,7 @@ namespace KaasService
 
             services.AddTransient<IKaasRepository, KaasRepository>();
 
-            services.AddControllers();
+            services.AddControllers().AddXmlDataContractSerializerFormatters();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "KaasService", Version = "v1" });
