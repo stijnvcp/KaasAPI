@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KaasService", "KaasService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaasClient", "KaasClient\KaasClient.csproj", "{ADB555BD-DB37-4596-9060-DD048C11E91D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaasServiceUnitsTest", "KaasServiceUnitsTest\KaasServiceUnitsTest.csproj", "{0A079A96-624C-4AEA-8661-F1F08C29DC9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ADB555BD-DB37-4596-9060-DD048C11E91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADB555BD-DB37-4596-9060-DD048C11E91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADB555BD-DB37-4596-9060-DD048C11E91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A079A96-624C-4AEA-8661-F1F08C29DC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A079A96-624C-4AEA-8661-F1F08C29DC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A079A96-624C-4AEA-8661-F1F08C29DC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A079A96-624C-4AEA-8661-F1F08C29DC9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
